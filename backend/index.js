@@ -1,46 +1,35 @@
 const port = process.env.PORT || 4000;
 
-const io = require("socket.io")(port, {
+const io = require("socket.io")( port, {
     cors: {
-        origin: '*',
+        origin: "*"
     }
 });
 
+
 let scubas = [];
 
+
 io.on('connection', (socket) => {
-    console.log(`user: ${socket.id} - connected`);
+    console.log('user: ' + socket.id + ' - connected');
 
-    socket.emit('info', scubas);
-
-    socket.on('newTab', (user, url) => {
-        // console.log(data);
-
+    socket.on('newUrl', (user, url) => {
         let scubaUser = scubas.find(scuba => scuba.id === socket.id);
 
         if(scubaUser){
             scubaUser.url = url;
         }
-        
         else {
             scubas.push({ id: socket.id, name: user, url: url });
         }
-        
-        console.log(scubas);
-        io.emit('info', scubas);  
-    })
 
-    socket.on('getInfo', () =>{
-        setInterval(() => {
-            socket.emit('info', scubas);
-        }, 1500);
+        console.log(scubas)
+        io.emit('scubas', scubas);
     })
 
     socket.on('disconnect', () => {
-        // remove object from array scubas
+        console.log('user: ' + socket.id + ' - disconnected');
         let scubaUser = scubas.find(scuba => scuba.id === socket.id);
         scubas.splice(scubas.indexOf(scubaUser), 1);
-        io.emit('info', scubas);
-        console.log('user disconnected');
-    });
-});
+    })
+})
