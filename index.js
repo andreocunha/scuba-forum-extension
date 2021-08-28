@@ -26,7 +26,7 @@ io.on('connection', (socket) => {
             scubas.push({ id: socket.id, name: user, url: url });
         }
         
-        console.log(scubas);
+        // console.log(scubas);
         io.emit('scubas', scubas);  
     })
 
