@@ -1,4 +1,5 @@
-const socket = io.connect('http://localhost:4000');
+// const socket = io.connect('http://localhost:4000');
+const socket = io.connect('https://scuba-radar-api.herokuapp.com');
 
 let user = ''
 let url = ''
