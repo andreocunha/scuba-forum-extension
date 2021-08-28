@@ -6,10 +6,7 @@ function changeValue(values){
     usersList.innerHTML = "";
 
     for(let i = 0; i < values.length; i++){
-        let user = values[i].name;
-        let userElement = document.createElement("li");
-        userElement.innerHTML = user;
-        usersList.appendChild(userElement);
+        usersList.innerHTML += `<h3>${values[i].name}</h3>`;
     }
 }
 

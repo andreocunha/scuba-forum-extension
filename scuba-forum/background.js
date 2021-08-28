@@ -20,19 +20,23 @@ chrome.browserAction.onClicked.addListener( async function(tab) {
         width: 200,
         height: 300
     });
+
+    socket.emit('getScubas');
 })
 
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
-    url = tab.url;
-    if(url !== '' && url.includes('alura.com.br')) {
-        socket.emit('newUrl', user, url);
+    if (changeInfo.status == 'complete' && user !== '') {
+        url = tab.url;
+        if(tab.url.includes('alura.com.br')){
+            socket.emit('newUrl', user, tab.url);
+        }
     }
 })
 
 chrome.tabs.onActivated.addListener(function(activeInfo) {
     chrome.tabs.get(activeInfo.tabId, function(tab) {
         url = tab.url;
-        if(url !== '' && url.includes('alura.com.br')) {
+        if(user !== '' && url.includes('alura.com.br')) {
             socket.emit('newUrl', user, url);
         }
     })
