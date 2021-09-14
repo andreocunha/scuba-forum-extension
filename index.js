@@ -31,9 +31,9 @@ io.on('connection', (socket) => {
     })
 
     socket.on('getScubas', () =>{
-        socket.emit('scubas', scubas);
+        io.emit('scubas', scubas);
         setTimeout(() => {
-            socket.emit('scubas', scubas);
+            io.emit('scubas', scubas);
         }, 1500);
     })
 
