@@ -1,0 +1,27 @@
+.token {
+  display: none;
+  align-items: center;
+  color: #fff;
+
+  background: #041833;
+
+  padding: 14px 24px;
+
+  position: fixed;
+  bottom: 0;
+  right: 0;
+
+  width: 40vw;
+
+  border-radius: 8px 0 0 0;
+
+  z-index: 100000;
+}
+
+.token.active {
+  display: flex;
+}
+
+.token img {
+  margin-right: 24px;
+}
