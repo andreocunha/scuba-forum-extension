@@ -13,6 +13,9 @@ O Scuba Radar é uma extensão para navegadores baseados no chrome que a intuito
 </h1>
 
 
+[Link oficial](https://chrome.google.com/webstore/detail/scuba-radar/jnfpjlhmajcccmecoedggldjhdhlofkg?hl=pt-br) para instalar a extensão.
+
+
 ## :rocket: Tecnologias
 
 Esse projeto foi desenvolvido usando as seguintes tecnologias:
